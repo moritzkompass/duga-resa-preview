@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duga Resa · Gewerbeflächen zur Miete an der A1, zwischen Zagreb und Rijeka</title>
+<meta name="description" content="Büro, Produktion und Lager in einem eingezäunten, 2023 renovierten Komplex in Duga Resa, Kroatien. 50 bis 16.000 m², ab 2,50 €/m², keine Maklergebühr.">
+<style>
+  @font-face{font-family:"Geist";src:url("fonts/Geist-Variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+  @font-face{font-family:"Geist Mono";src:url("fonts/GeistMono-Variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+
+  :root{
+    --greige:#EDEEEC; --greige-2:#E4E6E3; --ink:#1C1E20;
+    --ink-dim:rgba(28,30,32,0.66); --ink-faint:rgba(28,30,32,0.40);
+    --hair:rgba(28,30,32,0.14); --hair-soft:rgba(28,30,32,0.08);
+    --accent:#0F8A82; --accent-deep:#0B6F69; --on-accent:#F4F6F4;
+    --dark:#16191C; --paper:#EDEEEC; --paper-dim:rgba(237,238,236,0.66); --paper-faint:rgba(237,238,236,0.58);
+    --scrim:#13171B;
+    --wrap:1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Geist",system-ui,sans-serif;background:var(--greige);color:var(--ink);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;line-height:1.5}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .mono{font-family:"Geist Mono",ui-monospace,monospace}
+  .wrap{max-width:var(--wrap);margin:0 auto;width:100%}
+  .tnum{font-feature-settings:"tnum" 1}
+
+  /* kicker / section heads */
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-family:"Geist Mono",monospace;
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim)}
+  .kicker .tick{width:7px;height:7px;background:var(--accent);flex:0 0 auto}
+  .section{padding:clamp(60px,8vw,120px) clamp(22px,4vw,56px)}
+  .h2{font-weight:300;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.06;letter-spacing:-0.015em;max-width:20ch}
+  .lede{margin-top:18px;max-width:54ch;color:var(--ink-dim);font-size:clamp(15px,1.2vw,18px)}
+  .sec-head{margin-bottom:clamp(34px,4vw,56px)}
+  .sec-head .kicker{margin-bottom:22px}
+
+  .btn{display:inline-flex;align-items:center;gap:9px;font-size:14px;letter-spacing:.01em;text-decoration:none;
+    padding:14px 26px;border-radius:2px;border:1px solid transparent;cursor:pointer;font-family:inherit;
+    transition:transform .2s ease,background .2s ease,border-color .2s ease,color .2s ease}
+  .btn--primary{background:var(--accent-deep);color:var(--on-accent);font-weight:500}
+  .btn--primary:hover{background:#095e59;transform:translateY(-1px)}
+  .btn--ghost{border-color:var(--hair);color:var(--ink)}
+  .btn--ghost:hover{border-color:var(--ink-dim)}
+  .btn--on-dark{border-color:var(--paper-faint);color:var(--paper)}
+  .btn--on-dark:hover{border-color:var(--paper-dim)}
+
+  /* ---------- NAV ---------- */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:60;
+    padding:20px clamp(22px,4vw,56px);transition:background .3s ease,border-color .3s ease,padding .3s ease;
+    border-bottom:1px solid transparent}
+  .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .nav.scrolled{background:rgba(237,238,236,0.86);backdrop-filter:blur(10px);border-bottom-color:var(--hair);padding-top:14px;padding-bottom:14px}
+  .nav__brand{font-weight:600;letter-spacing:.34em;font-size:13px;text-transform:uppercase;color:var(--paper);transition:color .3s ease;text-decoration:none}
+  .nav.scrolled .nav__brand{color:var(--ink)}
+  .nav__right{display:flex;align-items:center;gap:26px}
+  .lang{display:flex;gap:15px;font-size:12px;letter-spacing:.16em}
+  .lang a{color:var(--paper-faint);text-decoration:none;text-transform:uppercase;padding-bottom:3px;transition:color .2s ease}
+  .lang a.is-active{color:var(--paper);border-bottom:1.5px solid var(--accent)}
+  .nav.scrolled .lang a{color:var(--ink-faint)} .nav.scrolled .lang a.is-active{color:var(--ink)}
+  .nav__cta{font-size:12.5px;letter-spacing:.04em;text-decoration:none;color:var(--paper);
+    border:1px solid var(--paper-faint);padding:9px 16px;border-radius:2px;transition:all .25s ease}
+  .nav.scrolled .nav__cta{color:var(--on-accent);background:var(--accent);border-color:var(--accent)}
+  .nav__cta:hover{border-color:var(--accent)}
+  @media(max-width:680px){.lang{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
+  .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 48%;z-index:-2}
+  .hero__scrim{position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(102deg,color-mix(in srgb,var(--scrim) 84%,transparent),color-mix(in srgb,var(--scrim) 40%,transparent) 40%,transparent 68%),
+    linear-gradient(0deg,color-mix(in srgb,var(--scrim) 90%,transparent),transparent 48%),
+    linear-gradient(180deg,color-mix(in srgb,var(--scrim) 58%,transparent),transparent 15%)}
+  .hero__body{margin-top:auto;padding:0 clamp(22px,4vw,56px) clamp(34px,4vw,56px)}
+  .hero .eyebrow{display:flex;align-items:center;gap:11px;margin-bottom:26px}
+  .hero .eyebrow .tick{width:8px;height:8px;background:var(--accent)}
+  .hero .eyebrow span{font-family:"Geist Mono",monospace;font-size:12px;letter-spacing:.26em;color:var(--paper-dim);text-transform:uppercase}
+  .hero h1{color:var(--paper);font-weight:300;text-transform:uppercase;font-size:clamp(2.2rem,5.4vw,5rem);
+    line-height:1.0;letter-spacing:-0.012em;max-width:17ch}
+  .hero .sub{margin-top:24px;max-width:44ch;color:var(--paper-dim);font-size:clamp(15px,1.25vw,18px)}
+  .hero .cta-row{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+  .hero .stats{display:flex;flex-wrap:wrap;margin-top:48px;border-top:1px solid rgba(237,238,236,0.20);padding-top:20px}
+  .hero .stat{padding-right:clamp(24px,3vw,50px);margin-right:clamp(24px,3vw,50px);border-right:1px solid rgba(237,238,236,0.18)}
+  .hero .stat:last-child{border-right:0;margin-right:0;padding-right:0}
+  @media(max-width:600px){
+    .hero .stats{display:grid;grid-template-columns:1fr 1fr;column-gap:0;row-gap:22px;margin-top:34px}
+    .hero .stat{padding:0;margin:0;border-right:0}
+    .hero .stat:nth-child(2n+1){padding-right:20px}
+    .hero .stat:nth-child(2n){border-left:1px solid rgba(237,238,236,0.18);padding-left:20px}
+    .hero .stat__n{font-size:17px}
+  }
+  .hero .stat__n{color:var(--paper);font-size:clamp(19px,1.8vw,26px);font-weight:400;letter-spacing:-0.01em}
+  .hero .stat__l{font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.2em;color:var(--paper-faint);text-transform:uppercase;margin-top:8px}
+  .hero__index{position:absolute;top:clamp(92px,12vw,130px);right:clamp(22px,4vw,56px);font-family:"Geist Mono",monospace;
+    font-size:11px;letter-spacing:.22em;color:var(--paper-faint);text-transform:uppercase;writing-mode:vertical-rl}
+
+  /* ---------- FAKTEN-BAND ---------- */
+  .facts{border-top:1px solid var(--hair)}
+  .facts .reg{display:grid;grid-template-columns:repeat(3,1fr)}
+  .facts .reg > div{border-bottom:1px solid var(--hair);border-right:1px solid var(--hair);padding:26px clamp(20px,2.4vw,34px)}
+  .facts .reg > div:nth-child(3n){border-right:0}
+  @media(min-width:721px){.facts .reg > div:nth-child(3n+1){padding-left:0}.facts .reg > div:nth-child(3n){padding-right:0}}
+  .facts dt{font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:10px}
+  .facts dd{font-size:clamp(15px,1.15vw,17px);letter-spacing:-0.005em}
+  @media(max-width:720px){.facts .reg{grid-template-columns:1fr 1fr}.facts .reg>div:nth-child(3n){border-right:1px solid var(--hair)}.facts .reg>div:nth-child(2n){border-right:0}.facts .reg>div:nth-child(2n+1){padding-left:0}.facts .reg>div:nth-child(2n){padding-right:0}}
+
+  /* ---------- FLÄCHEN / RECHNER ---------- */
+  .flaechen{background:var(--greige-2)}
+  .calc{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(28px,4vw,64px);align-items:stretch}
+  @media(max-width:880px){.calc{grid-template-columns:1fr}}
+  .calc__media{position:relative;border-radius:3px;overflow:hidden;min-height:340px;border:1px solid var(--hair)}
+  .calc__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .calc__panel{background:var(--greige);border:1px solid var(--hair);border-radius:3px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column}
+  .tabs{display:flex;gap:6px;background:var(--greige-2);padding:5px;border-radius:3px;margin-bottom:28px}
+  .tab{flex:1;border:0;background:transparent;font-family:inherit;font-size:14px;color:var(--ink-dim);padding:11px 8px;border-radius:2px;cursor:pointer;transition:all .18s ease}
+  .tab.is-active{background:var(--greige);color:var(--ink);box-shadow:0 1px 3px rgba(20,23,28,0.08);font-weight:500}
+  .calc__sizerow{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px}
+  .calc__size{font-size:clamp(34px,4.4vw,52px);font-weight:300;letter-spacing:-0.02em}
+  .calc__size small{font-size:0.42em;color:var(--ink-dim);font-weight:400;margin-left:6px}
+  .calc__range{font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:var(--hair);margin:20px 0 6px;cursor:pointer}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--accent);border:3px solid var(--greige);box-shadow:0 1px 4px rgba(20,23,28,0.25)}
+  input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--accent);border:3px solid var(--greige)}
+  .calc__minmax{display:flex;justify-content:space-between;font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.1em;color:var(--ink-faint)}
+  .calc__out{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:3px;margin:26px 0 4px}
+  .calc__out > div{background:var(--greige);padding:18px 20px}
+  .calc__out dt{font-family:"Geist Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:9px}
+  .calc__out dd{font-size:clamp(17px,1.5vw,21px);font-weight:400;letter-spacing:-0.01em}
+  .calc__foot{font-size:12px;color:var(--ink-faint);margin:16px 0 24px;line-height:1.5}
+  .calc__cta{margin-top:auto}
+  .footprint{position:absolute;left:18px;bottom:18px;right:18px;top:18px;pointer-events:none}
+  .footprint__frame{position:absolute;inset:0;border:1px dashed rgba(237,238,236,0.5)}
+  .footprint__box{position:absolute;left:0;bottom:0;background:color-mix(in srgb,var(--accent) 78%,transparent);
+    border:1px solid var(--on-accent);transition:width .35s cubic-bezier(.2,.7,.2,1),height .35s cubic-bezier(.2,.7,.2,1)}
+  .footprint__cap{position:absolute;top:0;left:0;z-index:2;font-family:"Geist Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--paper);
+    text-transform:uppercase;background:rgba(19,23,27,0.55);padding:5px 9px;backdrop-filter:blur(3px)}
+
+  /* ---------- LAGE ---------- */
+  .lage__grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:clamp(28px,4vw,56px);align-items:start}
+  @media(max-width:880px){.lage__grid{grid-template-columns:1fr}}
+  .map{position:relative;border:1px solid var(--hair);border-radius:3px;overflow:hidden;aspect-ratio:4/3;background:var(--greige-2)}
+  .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(0.3) contrast(1.02)}
+  .dist{border-top:1px solid var(--hair)}
+  .dist__row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:18px 2px;border-bottom:1px solid var(--hair)}
+  .dist__row dt{font-size:15px}
+  .dist__row dd{font-family:"Geist Mono",monospace;font-size:13px;letter-spacing:.04em;color:var(--ink-dim);text-align:right}
+  .plan{position:relative;margin-top:28px;border:1px solid var(--hair);border-radius:3px}
+  .plan > img{width:100%;height:auto;filter:saturate(0.9);border-radius:2px;display:block}
+  .plan__marker{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px;cursor:pointer;
+    border:0;background:none;padding:0;font:inherit}
+  .plan__marker:hover,.plan__marker:focus-visible{z-index:6;outline:none}
+  .plan__dot{width:11px;height:11px;border-radius:50%;background:var(--accent);border:2px solid var(--paper);box-shadow:0 1px 4px rgba(0,0,0,.4);flex:0 0 auto;transition:transform .2s ease}
+  .plan__marker:hover .plan__dot,.plan__marker:focus-visible .plan__dot{transform:scale(1.25)}
+  .plan__lbl{font-family:"Geist Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);
+    background:rgba(19,23,27,0.62);padding:3px 7px;border-radius:2px;white-space:nowrap;backdrop-filter:blur(3px)}
+  .plan__pop{position:absolute;width:196px;background:var(--greige);border:1px solid var(--hair);border-radius:4px;overflow:hidden;
+    box-shadow:0 14px 34px rgba(20,23,28,0.34);opacity:0;visibility:hidden;transform:translateY(6px);
+    transition:opacity .2s ease,transform .2s ease,visibility .2s;pointer-events:none;z-index:7}
+  .plan__pop img{width:100%;height:120px;object-fit:cover;display:block}
+  .plan__pop em{display:block;font-family:"Geist Mono",monospace;font-style:normal;font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-dim);padding:9px 11px}
+  .plan__marker:hover .plan__pop,.plan__marker:focus-visible .plan__pop{opacity:1;visibility:visible;transform:none}
+  .pop-down{top:calc(100% + 10px);left:0}
+  .pop-up{bottom:calc(100% + 10px);left:0}
+  @media(max-width:560px){.plan__pop{width:150px}.plan__pop img{height:92px}}
+  .plan__dot i{display:none}
+  .plan__legend{display:none;list-style:none;margin-top:16px;grid-template-columns:1fr 1fr;gap:11px 18px}
+  .plan__legend li{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink-dim);letter-spacing:-0.005em}
+  .plan__legend li b{flex:0 0 auto;width:21px;height:21px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-family:"Geist Mono",monospace;font-size:10px;font-weight:500;font-style:normal;display:flex;align-items:center;justify-content:center}
+  @media(max-width:600px){
+    .plan__lbl,.plan__pop{display:none}
+    .plan__dot{width:23px;height:23px}
+    .plan__dot i{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-style:normal;font-family:"Geist Mono",monospace;font-size:11px;font-weight:600;color:var(--on-accent)}
+    .plan__legend{display:grid}
+  }
+  /* heritage block (Lage, unten links) */
+  .lage__left{display:flex;flex-direction:column}
+  .heritage{margin-top:26px;border-top:1px solid var(--hair);padding-top:24px}
+  .heritage .kicker{margin-bottom:15px}
+  .heritage p{color:var(--ink-dim);font-size:15px;line-height:1.62}
+  .heritage__chips{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+  .heritage__chips span{font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--hair);border-radius:2px;padding:8px 12px}
+  .heritage__chips b{color:var(--ink);font-weight:500;margin-right:6px}
+  /* profiles (Fuer wen) */
+  .profiles{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair)}
+  .profiles .profile{border-bottom:1px solid var(--hair);border-right:1px solid var(--hair);padding:28px 24px 32px}
+  .profiles .profile:last-child{border-right:0}
+  .profile__m{font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:18px}
+  .profile h3{font-weight:400;font-size:17px;margin-bottom:10px;letter-spacing:-0.01em}
+  .profile p{color:var(--ink-dim);font-size:14px;line-height:1.55}
+  @media(max-width:820px){.profiles{grid-template-columns:1fr 1fr}.profiles .profile:nth-child(2n){border-right:0}}
+  @media(max-width:480px){.profiles{grid-template-columns:1fr}.profiles .profile{border-right:0}}
+  .plan__cap{font-size:12px;color:var(--ink-faint);margin-top:12px}
+
+  /* ---------- GALERIE ---------- */
+  .gal{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(10px,1.2vw,16px)}
+  .gal figure{position:relative;overflow:hidden;border:1px solid var(--hair);border-radius:2px;background:var(--greige-2)}
+  .gal img{width:100%;height:100%;object-fit:cover;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+  .gal figure:hover img{transform:scale(1.04)}
+  .gal figcaption{position:absolute;left:0;bottom:0;right:0;padding:14px 14px 12px;
+    font-family:"Geist Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);
+    background:linear-gradient(0deg,rgba(19,23,27,0.72),transparent)}
+  .gal .g-wide{grid-column:span 3} .gal .g-tall{grid-column:span 3;aspect-ratio:16/10}
+  .gal .g-sq{grid-column:span 2;aspect-ratio:1/1}
+  @media(max-width:820px){.gal{grid-template-columns:repeat(2,1fr)}.gal .g-wide,.gal .g-tall,.gal .g-sq{grid-column:span 1;aspect-ratio:4/3}}
+  /* Kategorie-Galerie */
+  .gal2{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,18px)}
+  .gcat{position:relative;display:block;width:100%;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--hair);border-radius:3px;cursor:pointer;background:var(--greige-2);padding:0;font:inherit;text-align:left}
+  .gcat img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+  .gcat:hover img,.gcat:focus-visible img{transform:scale(1.05)}
+  .gcat:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .gcat__grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(19,23,27,0.80),rgba(19,23,27,0.05) 55%,transparent)}
+  .gcat__cap{position:absolute;left:0;right:0;bottom:0;padding:18px 18px 17px;color:var(--paper)}
+  .gcat__name{display:block;font-size:17px;font-weight:400;letter-spacing:-0.01em}
+  .gcat__count{display:flex;align-items:center;gap:8px;margin-top:9px;font-family:"Geist Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+  .gcat__count svg{flex:0 0 auto}
+  @media(max-width:820px){.gal2{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.gal2{grid-template-columns:1fr}.gcat{aspect-ratio:3/2}}
+  /* Lightbox */
+  .lb{position:fixed;inset:0;z-index:200;background:rgba(14,16,19,0.95);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center}
+  .lb.open{display:flex}
+  .lb__img{max-width:90vw;max-height:80vh;object-fit:contain;border-radius:3px;box-shadow:0 30px 80px rgba(0,0,0,0.5);user-select:none;-webkit-user-drag:none}
+  .lb__close{position:absolute;top:20px;right:24px;width:42px;height:42px;border:1px solid rgba(237,238,236,0.28);border-radius:50%;background:transparent;color:var(--paper);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
+  .lb__close:hover{border-color:var(--paper);background:rgba(237,238,236,0.08)}
+  .lb__nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border:1px solid rgba(237,238,236,0.28);border-radius:50%;background:rgba(20,23,28,0.42);color:var(--paper);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
+  .lb__nav:hover{border-color:var(--paper);background:rgba(20,23,28,0.72)}
+  .lb__prev{left:clamp(14px,3vw,40px)} .lb__next{right:clamp(14px,3vw,40px)}
+  .lb__cap{position:absolute;left:0;right:0;bottom:26px;display:flex;flex-direction:column;align-items:center;gap:7px;pointer-events:none;padding:0 20px;text-align:center}
+  .lb__meta{font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-faint)}
+  .lb__text{font-size:14px;color:var(--paper-dim)}
+  @media(max-width:560px){.lb__img{max-width:94vw;max-height:72vh}.lb__nav{width:42px;height:42px}}
+
+  /* ---------- AM FLUSS (dark) ---------- */
+  .fluss{position:relative;background:var(--dark);color:var(--paper);overflow:hidden;isolation:isolate}
+  .fluss.section{padding-bottom:clamp(40px,4.5vw,60px)}
+  .fluss__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.30;z-index:-2}
+  .fluss__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--dark),color-mix(in srgb,var(--dark) 55%,transparent))}
+  .fluss .kicker{color:var(--paper-dim)}
+  .fluss .h2{color:var(--paper)} .fluss .lede{color:var(--paper-dim)}
+  .fluss__cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.4vw,40px);margin-top:clamp(34px,4vw,52px)}
+  @media(max-width:760px){.fluss__cols{grid-template-columns:1fr}}
+  .fluss__col{border-top:1px solid rgba(237,238,236,0.20);padding-top:20px}
+  .fluss__col h3{font-weight:400;font-size:18px;margin-bottom:10px}
+  .fluss__col p{color:var(--paper-dim);font-size:14px;line-height:1.6}
+  .fluss__note{margin:clamp(44px,5vw,68px) auto 0;max-width:66ch;text-align:center;font-size:12.5px;color:var(--paper-faint);line-height:1.6}
+
+  /* ---------- KONDITIONEN ---------- */
+  .kond__grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:clamp(28px,4vw,56px);align-items:start}
+  @media(max-width:880px){.kond__grid{grid-template-columns:1fr}}
+  table.price{width:100%;border-collapse:collapse}
+  table.price th,table.price td{text-align:left;padding:16px 4px;border-bottom:1px solid var(--hair);font-weight:400;font-size:15px}
+  table.price th{font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  table.price td.num{font-family:"Geist Mono",monospace;text-align:right;color:var(--ink-dim);letter-spacing:.02em}
+  .incl-head{font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);padding:16px 4px;border-bottom:1px solid var(--hair)}
+  .incl{list-style:none}
+  .incl li{display:flex;align-items:flex-start;gap:13px;padding:16px 4px;border-bottom:1px solid var(--hair);font-size:15px;letter-spacing:-0.005em}
+  .incl .ck{flex:0 0 auto;color:var(--accent);margin-top:2px}
+
+  /* ---------- ANFRAGE ---------- */
+  .anfrage{background:var(--dark);color:var(--paper)}
+  .anfrage .kicker{color:var(--paper-dim)} .anfrage .h2{color:var(--paper)}
+  .anfrage__grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(30px,5vw,72px);align-items:start;margin-top:clamp(30px,3vw,44px)}
+  @media(max-width:880px){.anfrage__grid{grid-template-columns:1fr}}
+  .contact__row{border-top:1px solid rgba(237,238,236,0.2);padding:18px 0;display:flex;flex-direction:column;gap:5px}
+  .contact__row .l{font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-faint)}
+  .contact__row .v{font-size:16px}
+  .contact__row a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px}
+  form.lead{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  form.lead .full{grid-column:1/-1}
+  @media(max-width:540px){form.lead{grid-template-columns:1fr}}
+  .field label{display:block;font-family:"Geist Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-faint);margin-bottom:8px}
+  .field input,.field textarea{width:100%;background:rgba(237,238,236,0.06);border:1px solid rgba(237,238,236,0.18);border-radius:2px;
+    padding:13px 14px;color:var(--paper);font-family:inherit;font-size:15px;transition:border-color .2s ease}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+  .field textarea{resize:vertical;min-height:96px}
+  .lead__submit{grid-column:1/-1;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px}
+  .lead__hint{font-size:12px;color:var(--paper-faint)}
+  .lead__ok{grid-column:1/-1;display:none;border:1px solid var(--accent);border-radius:3px;padding:22px 24px;background:rgba(15,138,130,0.10)}
+  .lead__ok.show{display:block}
+  .lead__ok h3{font-weight:400;font-size:19px;margin-bottom:8px}
+  .lead__ok p{color:var(--paper-dim);font-size:14px}
+
+  /* ---------- FOOTER ---------- */
+  .foot{background:var(--dark);color:var(--paper-faint);border-top:1px solid rgba(237,238,236,0.12);
+    padding:34px clamp(22px,4vw,56px);font-size:12.5px}
+  .foot__inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .foot a{color:var(--paper-dim);text-decoration:none;margin-left:18px}
+  .foot a:hover{color:var(--paper)}
+  .foot .lang-f a{margin-left:12px;letter-spacing:.14em;text-transform:uppercase;font-size:11px}
+
+  /* Scroll-Reveal (einmalig, Emil-Stil: nur opacity + transform, starke ease-out) */
+  .rv{opacity:0;transform:translateY(20px);filter:blur(6px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none;filter:blur(0)}
+  .rvg>*{opacity:0;transform:translateY(20px);filter:blur(6px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--ri,0)*80ms)}
+  .rvg.in>*{opacity:1;transform:none;filter:blur(0)}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav" data-cms-section="nav">
+  <div class="wrap nav__inner">
+    <a href="#top" class="nav__brand" data-cms-key="nav.brand">Duga&nbsp;Resa</a>
+    <div class="nav__right">
+      <div class="lang" data-lang-switch>
+        <a href="/" hreflang="hr">HR</a><a href="/en" hreflang="en">EN</a><a href="/de" hreflang="de" class="is-active" aria-current="true">DE</a><a href="/sl" hreflang="sl">SL</a>
+      </div>
+      <a href="#anfrage" class="nav__cta" data-cms-button="nav.cta" data-track="cta_nav">Besichtigung anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top" data-cms-section="hero">
+  <img class="hero__img" src="img/hero.jpg?v=2" data-cms-key="hero.image" data-cms-type="image" alt="Luftaufnahme des Gewerbekomplexes in Duga Resa am Fluss">
+  <div class="hero__scrim"></div>
+  <div class="hero__index" data-cms-key="hero.index">01 / Standort</div>
+  <div class="hero__body">
+    <div class="wrap">
+      <div class="eyebrow"><i class="tick"></i><span data-cms-key="hero.eyebrow">Duga Resa · Karlovac, Kroatien</span></div>
+      <h1 data-cms-key="hero.headline">Gewerbeflächen an der A1, zwischen Zagreb und Rijeka</h1>
+      <p class="sub" data-cms-key="hero.subline">Büro, Produktion und Lager in einem eingezäunten, 2023 renovierten Komplex direkt am Fluss.</p>
+      <div class="cta-row">
+        <a href="#anfrage" class="btn btn--primary" data-cms-button="hero.cta_primary" data-track="cta_hero">Besichtigung anfragen</a>
+        <a href="#flaechen" class="btn btn--on-dark" data-cms-button="hero.cta_secondary" data-track="cta_flaechen">Flächen ansehen</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat__n tnum" data-cms-key="hero.stat1_value">ab 2,50 €/m²</div><div class="stat__l" data-cms-key="hero.stat1_label">Mietpreis</div></div>
+        <div class="stat"><div class="stat__n tnum" data-cms-key="hero.stat2_value">50 bis 16.000 m²</div><div class="stat__l" data-cms-key="hero.stat2_label">Flächengröße</div></div>
+        <div class="stat"><div class="stat__n" data-cms-key="hero.stat3_value">10 Min</div><div class="stat__l" data-cms-key="hero.stat3_label">zur A1</div></div>
+        <div class="stat"><div class="stat__n" data-cms-key="hero.stat4_value">2023</div><div class="stat__l" data-cms-key="hero.stat4_label">renoviert</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- FAKTEN-BAND -->
+<section class="facts" data-cms-section="facts">
+  <div class="section" style="padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(44px,5vw,64px)">
+    <div class="wrap">
+      <div class="kicker" style="margin-bottom:28px"><i class="tick"></i><span data-cms-key="facts.kicker">Der Komplex auf einen Blick</span></div>
+      <dl class="reg">
+        <div><dt data-cms-key="facts.row1_label">Lage</dt><dd data-cms-key="facts.row1_value">Eingezäunt, direkt am Fluss</dd></div>
+        <div><dt data-cms-key="facts.row2_label">Anbindung</dt><dd data-cms-key="facts.row2_value">10 Min zur A1 Zagreb-Rijeka</dd></div>
+        <div><dt data-cms-key="facts.row3_label">Zagreb</dt><dd data-cms-key="facts.row3_value">55 km / 40 Min</dd></div>
+        <div><dt data-cms-key="facts.row4_label">Zustand</dt><dd data-cms-key="facts.row4_value">2023 renoviert, bezugsfertig</dd></div>
+        <div><dt data-cms-key="facts.row5_label">Zufahrt</dt><dd data-cms-key="facts.row5_value">Ebenerdig, alle Fahrzeugtypen</dd></div>
+        <div><dt data-cms-key="facts.row6_label">Maklergebühr</dt><dd data-cms-key="facts.row6_value">Keine für den Mieter</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- FLÄCHEN + RECHNER -->
+<section class="flaechen section" id="flaechen" data-cms-section="flaechen">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><i class="tick"></i><span data-cms-key="flaechen.kicker">Die Flächen</span></div>
+      <h2 class="h2" data-cms-key="flaechen.headline">Vom 50 m² Büro bis zur 16.000 m² Halle, alles in einem Komplex.</h2>
+      <p class="lede" data-cms-key="flaechen.lede">Wählen Sie Nutzung und Größe. Sie sehen den Preis und die Größe sofort und übernehmen die Auswahl direkt in Ihre Anfrage.</p>
+    </div>
+
+    <div class="calc">
+      <div class="calc__media">
+        <img src="img/flaechen.jpg" data-cms-key="flaechen.image" data-cms-type="image" alt="Renovierte Lagerflächen mit Laderampen unter den Büroetagen">
+        <div class="footprint">
+          <div class="footprint__cap" id="fpCap">Maßstab bis 16.000 m²</div>
+          <div class="footprint__frame"></div>
+          <div class="footprint__box" id="fpBox"></div>
+        </div>
+      </div>
+
+      <div class="calc__panel">
+        <div class="tabs" role="tablist">
+          <button class="tab is-active" data-use="buero" role="tab" data-cms-key="flaechen.tab_buero">Büro</button>
+          <button class="tab" data-use="produktion" role="tab" data-cms-key="flaechen.tab_produktion">Produktion</button>
+          <button class="tab" data-use="lager" role="tab" data-cms-key="flaechen.tab_lager">Lager</button>
+        </div>
+
+        <div class="calc__sizerow">
+          <div class="calc__size tnum"><span id="cSize">200</span><small>m²</small></div>
+          <div class="calc__range" id="cUseLbl">Bürofläche</div>
+        </div>
+        <input type="range" id="cRange" min="50" max="1400" step="10" value="200" aria-label="Flächengröße">
+        <div class="calc__minmax"><span id="cMin">50 m²</span><span id="cMax">1.400 m²</span></div>
+
+        <dl class="calc__out">
+          <div><dt data-cms-key="flaechen.out_price_label">Mietpreis</dt><dd class="tnum" id="cPrice">3,00 bis 5,00 €/m²</dd></div>
+          <div><dt data-cms-key="flaechen.out_month_label">Pro Monat, ca.</dt><dd class="tnum" id="cMonth">600 bis 1.000 €</dd></div>
+        </dl>
+        <p class="calc__foot" data-cms-key="flaechen.foot">Richtwert. Nebenkosten werden separat abgerechnet, der genaue Preis hängt von Lage im Gebäude, Deckenhöhe und gewünschtem Ausbau ab.</p>
+
+        <button class="btn btn--primary calc__cta" id="cCta" data-cms-key="flaechen.cta_label" data-track="cta_calc">Diese Fläche anfragen</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAGE -->
+<section class="section" id="lage" data-cms-section="lage">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><i class="tick"></i><span data-cms-key="lage.kicker">Lage &amp; Anbindung</span></div>
+      <h2 class="h2" data-cms-key="lage.headline">Auf der Achse Zagreb-Rijeka, zehn Minuten von der A1.</h2>
+      <p class="lede" data-cms-key="lage.lede">Duga Resa liegt im Korridor zwischen Hauptstadt und Adria-Hafen. Kurze Wege für Pendler, Logistik und Lieferverkehr.</p>
+    </div>
+
+    <div class="lage__grid">
+      <div class="lage__left">
+        <div class="map">
+          <iframe loading="lazy" title="Karte Duga Resa"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=15.40%2C45.40%2C15.60%2C45.50&layer=mapnik&marker=45.448%2C15.498"></iframe>
+        </div>
+        <div class="heritage">
+          <div class="kicker"><i class="tick"></i><span data-cms-key="lage.heritage_kicker">Standort mit Geschichte</span></div>
+          <p data-cms-key="lage.heritage_body">Der Komplex ist die ehemalige Pamučna industrija Duga Resa, 1884 am Ufer der Mrežnica gegründet. Von Anfang an trieb eines der ersten Wasserkraftwerke Kroatiens die Spinnmaschinen an. Die Stadt ist um diese Fabrik gewachsen.</p>
+          <div class="heritage__chips"><span data-cms-key="lage.heritage_chip1"><b>1884</b> gegründet</span><span data-cms-key="lage.heritage_chip2"><b>2023</b> renoviert</span></div>
+        </div>
+      </div>
+      <div>
+        <dl class="dist">
+          <div class="dist__row"><dt data-cms-key="lage.dist1_label">Autobahn A1 (Zagreb-Rijeka)</dt><dd data-cms-key="lage.dist1_value">10 Min</dd></div>
+          <div class="dist__row"><dt data-cms-key="lage.dist2_label">Zagreb</dt><dd data-cms-key="lage.dist2_value">55 km / 40 Min</dd></div>
+          <div class="dist__row"><dt data-cms-key="lage.dist3_label">Karlovac (Bezirksstadt)</dt><dd data-cms-key="lage.dist3_value">12 km</dd></div>
+          <div class="dist__row"><dt data-cms-key="lage.dist4_label">Hafen Rijeka</dt><dd data-cms-key="lage.dist4_value">ca. 100 km</dd></div>
+          <div class="dist__row"><dt data-cms-key="lage.dist5_label">Zufahrt</dt><dd data-cms-key="lage.dist5_value">Alle Fahrzeugtypen</dd></div>
+        </dl>
+        <a href="https://www.google.com/maps/search/?api=1&query=Duga+Resa+Croatia" target="_blank" rel="noopener" class="btn btn--ghost" style="margin-top:24px" data-cms-button="lage.cta_route" data-track="cta_route">Route planen</a>
+
+        <div class="plan">
+          <img src="img/areal.jpg" data-cms-key="lage.plan_image" data-cms-type="image" alt="Luftaufnahme des Areals mit Bürotrakt, Hallen und Fluss">
+          <button type="button" class="plan__marker" style="left:24%;top:42%"><span class="plan__dot"><i>1</i></span><span class="plan__lbl" data-cms-key="lage.marker1_label">Bürotrakt</span><span class="plan__pop pop-down"><img src="img/g-buero.jpg" data-cms-key="lage.marker1_image" data-cms-type="image" alt="Büro im Bürotrakt"><em data-cms-key="lage.marker1_caption">Büro, bezugsfertig</em></span></button>
+          <button type="button" class="plan__marker" style="left:55%;top:34%"><span class="plan__dot"><i>2</i></span><span class="plan__lbl" data-cms-key="lage.marker2_label">Produktionshallen</span><span class="plan__pop pop-down"><img src="img/g-halle.jpg" data-cms-key="lage.marker2_image" data-cms-type="image" alt="Produktionshalle"><em data-cms-key="lage.marker2_caption">Produktionshalle, Tageslicht</em></span></button>
+          <button type="button" class="plan__marker" style="left:60%;top:72%"><span class="plan__dot"><i>3</i></span><span class="plan__lbl" data-cms-key="lage.marker3_label">Lager / Laderampen</span><span class="plan__pop pop-up"><img src="img/g-lager.jpg" data-cms-key="lage.marker3_image" data-cms-type="image" alt="Lager mit Laderampen"><em data-cms-key="lage.marker3_caption">Lager mit Sektionaltoren</em></span></button>
+          <button type="button" class="plan__marker" style="left:9%;top:55%"><span class="plan__dot"><i>4</i></span><span class="plan__lbl" data-cms-key="lage.marker4_label">Mrežnica</span><span class="plan__pop pop-down"><img src="img/fluss.jpg" data-cms-key="lage.marker4_image" data-cms-type="image" alt="Fluss Mrežnica am Areal"><em data-cms-key="lage.marker4_caption">Fluss am Areal</em></span></button>
+        </div>
+        <p class="plan__cap" data-cms-key="lage.plan_caption">Das Areal: Bürotrakt, Produktions- und Lagerhallen rund um den Innenhof, der Fluss an der Westseite.</p>
+        <ol class="plan__legend">
+          <li><b>1</b><span data-cms-key="lage.legend1">Bürotrakt</span></li>
+          <li><b>2</b><span data-cms-key="lage.legend2">Produktionshallen</span></li>
+          <li><b>3</b><span data-cms-key="lage.legend3">Lager / Laderampen</span></li>
+          <li><b>4</b><span data-cms-key="lage.legend4">Mrežnica</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section class="section" id="galerie" style="background:var(--greige-2)" data-cms-section="galerie">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><i class="tick"></i><span data-cms-key="galerie.kicker">Renoviert 2023</span></div>
+      <h2 class="h2" data-cms-key="galerie.headline">Bezugsfertige Flächen, kein Sanierungsstau.</h2>
+    </div>
+    <div class="gal2">
+      <button class="gcat" data-cat="0"><img src="img/g-halle.jpg" data-cms-key="galerie.cat1_image" data-cms-type="image" alt="Produktion und Lager"><span class="gcat__grad"></span><span class="gcat__cap"><span class="gcat__name" data-cms-key="galerie.cat1_name">Produktion &amp; Lager</span><span class="gcat__count"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="13" height="13" rx="1.5"/><path d="M8 21h11a2 2 0 0 0 2-2V8"/></svg><span data-cms-key="galerie.cat1_count">4 Fotos</span></span></span></button>
+      <button class="gcat" data-cat="1"><img src="img/g-buero.jpg" data-cms-key="galerie.cat2_image" data-cms-type="image" alt="Büro und Arbeitsräume"><span class="gcat__grad"></span><span class="gcat__cap"><span class="gcat__name" data-cms-key="galerie.cat2_name">Büro &amp; Arbeitsräume</span><span class="gcat__count"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="13" height="13" rx="1.5"/><path d="M8 21h11a2 2 0 0 0 2-2V8"/></svg><span data-cms-key="galerie.cat2_count">3 Fotos</span></span></span></button>
+      <button class="gcat" data-cat="2"><img src="img/g-treppe.jpg" data-cms-key="galerie.cat3_image" data-cms-type="image" alt="Innenausbau"><span class="gcat__grad"></span><span class="gcat__cap"><span class="gcat__name" data-cms-key="galerie.cat3_name">Innenausbau</span><span class="gcat__count"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="13" height="13" rx="1.5"/><path d="M8 21h11a2 2 0 0 0 2-2V8"/></svg><span data-cms-key="galerie.cat3_count">4 Fotos</span></span></span></button>
+      <button class="gcat" data-cat="3"><img src="img/g-areal2.jpg" data-cms-key="galerie.cat4_image" data-cms-type="image" alt="Das Areal"><span class="gcat__grad"></span><span class="gcat__cap"><span class="gcat__name" data-cms-key="galerie.cat4_name">Das Areal</span><span class="gcat__count"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="13" height="13" rx="1.5"/><path d="M8 21h11a2 2 0 0 0 2-2V8"/></svg><span data-cms-key="galerie.cat4_count">5 Fotos</span></span></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- AM FLUSS -->
+<section class="fluss section" id="energie" data-cms-section="energie">
+  <img class="fluss__img" src="img/fluss2.jpg" data-cms-key="energie.image" data-cms-type="image" alt="Der Komplex an der Mrežnica">
+  <div class="fluss__scrim"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><i class="tick"></i><span data-cms-key="energie.kicker">Am Fluss</span></div>
+      <h2 class="h2" data-cms-key="energie.headline">Eigene Solarenergie, an einem historischen Wasserkraft-Standort.</h2>
+      <p class="lede" data-cms-key="energie.lede">Auf den Dachflächen des Areals erzeugt Photovoltaik eigenen Strom. Der Komplex steht direkt an der Mrežnica, dem Fluss, der die Fabrik ab 1884 mit einem der ersten Wasserkraftwerke Kroatiens antrieb. Ein seltener Standort mit echter Energie-Geschichte und einem ESG-Profil für Mieter mit Green-Reporting.</p>
+    </div>
+    <div class="fluss__cols">
+      <div class="fluss__col"><h3 data-cms-key="energie.col1_title">Solar heute</h3><p data-cms-key="energie.col1_body">Photovoltaik auf den großen Dachflächen erzeugt Strom direkt vor Ort.</p></div>
+      <div class="fluss__col"><h3 data-cms-key="energie.col2_title">Wasserkraft-Geschichte</h3><p data-cms-key="energie.col2_body">Der Standort entstand 1884 an einem der ersten Wasserkraftwerke Kroatiens, direkt am Fluss.</p></div>
+      <div class="fluss__col"><h3 data-cms-key="energie.col3_title">Für Mieter</h3><p data-cms-key="energie.col3_body">Eigene Solarerzeugung und ein klares ESG-Profil für nachhaltigkeitspflichtige Firmen.</p></div>
+    </div>
+    <p class="fluss__note" data-cms-key="energie.note">Hinweis: Nebenkosten werden separat abgerechnet. Den genauen Umfang der Eigenerzeugung und was im Mietpreis enthalten ist, klären wir im Besichtigungsgespräch.</p>
+  </div>
+</section>
+
+<!-- FÜR WEN -->
+<section class="section" id="fuer-wen" style="background:var(--greige-2)" data-cms-section="fuerwen">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><i class="tick"></i><span data-cms-key="fuerwen.kicker">Für wen es passt</span></div>
+      <h2 class="h2" data-cms-key="fuerwen.headline">Vom Startup bis zum Großlager.</h2>
+    </div>
+    <div class="profiles">
+      <div class="profile"><div class="profile__m" data-cms-key="fuerwen.profile1_meta">ab 200 m²</div><h3 data-cms-key="fuerwen.profile1_title">Logistik &amp; Großhandel</h3><p data-cms-key="fuerwen.profile1_body">Lager bis 16.000 m² mit ebenerdigen Laderampen, zehn Minuten zur A1 und Anbindung Richtung Hafen Rijeka.</p></div>
+      <div class="profile"><div class="profile__m" data-cms-key="fuerwen.profile2_meta">ab 200 m²</div><h3 data-cms-key="fuerwen.profile2_title">Produktion</h3><p data-cms-key="fuerwen.profile2_body">Hallen mit Tageslicht und angrenzendem Büro in einem Komplex, alles auf einem Areal.</p></div>
+      <div class="profile"><div class="profile__m" data-cms-key="fuerwen.profile3_meta">ab 50 m²</div><h3 data-cms-key="fuerwen.profile3_title">Startups &amp; KMU</h3><p data-cms-key="fuerwen.profile3_body">Kleine Einheiten ohne Maklergebühr, die mit dem Unternehmen mitwachsen können.</p></div>
+      <div class="profile"><div class="profile__m" data-cms-key="fuerwen.profile4_meta">Solar vor Ort</div><h3 data-cms-key="fuerwen.profile4_title">ESG &amp; Nachhaltigkeit</h3><p data-cms-key="fuerwen.profile4_body">Eigene Solarerzeugung vor Ort für Firmen mit Green-Reporting-Pflichten.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- KONDITIONEN -->
+<section class="section" id="konditionen" data-cms-section="konditionen">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><i class="tick"></i><span data-cms-key="konditionen.kicker">Konditionen</span></div>
+      <h2 class="h2" data-cms-key="konditionen.headline">Klare Preise, keine versteckten Kosten.</h2>
+    </div>
+    <div class="kond__grid">
+      <table class="price">
+        <thead><tr><th data-cms-key="konditionen.th_type">Flächentyp</th><th data-cms-key="konditionen.th_size">Größe</th><th class="num" data-cms-key="konditionen.th_price">Preis / m²</th></tr></thead>
+        <tbody>
+          <tr><td data-cms-key="konditionen.row1_type">Büro</td><td class="tnum" data-cms-key="konditionen.row1_size">50 bis 1.400 m²</td><td class="num" data-cms-key="konditionen.row1_price">3,00 bis 5,00 €</td></tr>
+          <tr><td data-cms-key="konditionen.row2_type">Produktion</td><td class="tnum" data-cms-key="konditionen.row2_size">200 bis 16.000 m²</td><td class="num" data-cms-key="konditionen.row2_price">2,50 bis 5,00 €</td></tr>
+          <tr><td data-cms-key="konditionen.row3_type">Lager</td><td class="tnum" data-cms-key="konditionen.row3_size">200 bis 16.000 m²</td><td class="num" data-cms-key="konditionen.row3_price">2,50 bis 5,00 €</td></tr>
+          <tr><td data-cms-key="konditionen.row4_type">Nebenkosten</td><td data-cms-key="konditionen.row4_size">separat</td><td class="num" data-cms-key="konditionen.row4_price">nach Verbrauch</td></tr>
+        </tbody>
+      </table>
+      <div class="kond__incl">
+        <div class="incl-head" data-cms-key="konditionen.incl_head">Inklusive</div>
+        <ul class="incl">
+          <li><svg class="ck" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-cms-key="konditionen.incl1">Keine Maklergebühr für den Mieter</span></li>
+          <li><svg class="ck" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-cms-key="konditionen.incl2">Volle Infrastruktur inklusive</span></li>
+          <li><svg class="ck" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-cms-key="konditionen.incl3">Dauerhaft verfügbarer Parkplatz</span></li>
+          <li><svg class="ck" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-cms-key="konditionen.incl4">Besichtigung nach Vereinbarung</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANFRAGE -->
+<section class="anfrage section" id="anfrage" data-cms-section="anfrage">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><i class="tick"></i><span data-cms-key="anfrage.kicker">Besichtigung anfragen</span></div>
+      <h2 class="h2" data-cms-key="anfrage.headline">Sagen Sie uns, was Sie brauchen.</h2>
+    </div>
+    <div class="anfrage__grid">
+      <div>
+        <div class="contact__row"><span class="l" data-cms-key="anfrage.contact1_label">Ansprechpartnerin</span><span class="v" data-cms-key="anfrage.contact1_value">Vesna Goricki</span></div>
+        <div class="contact__row"><span class="l" data-cms-key="anfrage.contact2_label">E-Mail</span><span class="v" data-cms-key="anfrage.contact2_value"><a href="mailto:vesna.goricki@vis.international">vesna.goricki@vis.international</a></span></div>
+        <div class="contact__row"><span class="l" data-cms-key="anfrage.contact3_label">Telefon</span><span class="v" data-cms-key="anfrage.contact3_value" style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><a href="tel:+385952000416">+385 95 2000 416</a><a href="tel:+385913570102">+385 91 3570 102</a><a href="tel:+385913520026">+385 91 3520 026</a></span></div>
+        <div class="contact__row"><span class="l" data-cms-key="anfrage.contact4_label">Anbieter</span><span class="v" data-cms-key="anfrage.contact4_value">LIPOVICA d.o.o.</span></div>
+        <div class="contact__row"><span class="l" data-cms-key="anfrage.contact5_label">Besichtigung</span><span class="v" data-cms-key="anfrage.contact5_value">Nach Vereinbarung</span></div>
+      </div>
+
+      <form class="lead" id="leadForm" data-vbb-form="contact" action="?form=contact" method="post" novalidate>
+        <div class="field"><label for="f-name" data-cms-key="anfrage.field_name">Name</label><input id="f-name" name="name" required></div>
+        <div class="field"><label for="f-firma" data-cms-key="anfrage.field_firma">Firma</label><input id="f-firma" name="firma"></div>
+        <div class="field"><label for="f-mail" data-cms-key="anfrage.field_mail">E-Mail</label><input id="f-mail" name="email" type="email" required></div>
+        <div class="field"><label for="f-tel" data-cms-key="anfrage.field_tel">Telefon</label><input id="f-tel" name="telefon"></div>
+        <div class="field full"><label for="f-flaeche" data-cms-key="anfrage.field_flaeche">Gewünschte Fläche</label><input id="f-flaeche" name="flaeche" placeholder="z.B. 500 m² Lager"></div>
+        <div class="field full"><label for="f-msg" data-cms-key="anfrage.field_msg">Nachricht</label><textarea id="f-msg" name="nachricht" placeholder="Wann möchten Sie besichtigen, welche Nutzung ist geplant?"></textarea></div>
+        <div class="lead__submit">
+          <button type="submit" class="btn btn--primary" data-cms-key="anfrage.submit_label">Anfrage senden</button>
+          <span class="lead__hint" data-cms-key="anfrage.hint">Wir melden uns innerhalb von 24 Stunden.</span>
+        </div>
+        <div class="lead__ok" id="leadOk">
+          <h3 data-cms-key="anfrage.ok_title">Danke, Ihre Anfrage ist da.</h3>
+          <p data-cms-key="anfrage.ok_body">Vesna Goricki meldet sich zeitnah bei Ihnen für die Besichtigung.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="foot" data-cms-section="footer">
+  <div class="wrap foot__inner">
+    <div data-cms-key="footer.copyright">© 2026 LIPOVICA d.o.o. · Duga Resa, Karlovac, Kroatien</div>
+    <div>
+      <span class="lang-f" data-lang-switch><a href="/" hreflang="hr">HR</a><a href="/en" hreflang="en">EN</a><a href="/de" hreflang="de" class="is-active" aria-current="true">DE</a><a href="/sl" hreflang="sl">SL</a></span>
+      <a href="/impressum" data-cms-button="footer.imprint">Impressum</a><a href="/datenschutz" data-cms-button="footer.privacy">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" aria-hidden="true" role="dialog" aria-label="Foto-Galerie">
+  <button class="lb__close" id="lbClose" aria-label="Schließen"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <button class="lb__nav lb__prev" id="lbPrev" aria-label="Vorheriges Foto"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <img class="lb__img" id="lbImg" src="" alt="">
+  <button class="lb__nav lb__next" id="lbNext" aria-label="Nächstes Foto"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+  <div class="lb__cap"><span class="lb__meta" id="lbMeta"></span><span class="lb__text" id="lbText"></span></div>
+</div>
+
+<script>
+  /* ---------- Tracking shim (GA4 / Meta / PostHog ready) ---------- */
+  window.dataLayer = window.dataLayer || [];
+  function track(event, props){
+    var payload = Object.assign({event:event}, props||{});
+    window.dataLayer.push(payload);
+    if(window.console) console.log("[track]", payload);
+  }
+  document.querySelectorAll("[data-track]").forEach(function(el){
+    el.addEventListener("click", function(){ track(el.getAttribute("data-track"), {label: el.textContent.trim()}); });
+  });
+
+  /* ---------- Nav scroll state ---------- */
+  var nav = document.getElementById("nav");
+  function onScroll(){ nav.classList.toggle("scrolled", window.scrollY > window.innerHeight*0.7); }
+  onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
+
+  /* ---------- Flächenrechner ---------- */
+  /* === I18N (per language, generator-swapped) === */
+  var I18N = {
+    locale: "de-DE",
+    to: "bis",
+    useLabel: { buero:"Bürofläche", produktion:"Produktionsfläche", lager:"Lagerfläche" },
+    useShort: { buero:"Büro", produktion:"Produktion", lager:"Lager" }
+  };
+  /* === /I18N === */
+  var USE = {
+    buero:      {min:50,  max:1400,  step:10, pmin:3.0, pmax:5.0, start:200},
+    produktion: {min:200, max:16000, step:50, pmin:2.5, pmax:5.0, start:2000},
+    lager:      {min:200, max:16000, step:50, pmin:2.5, pmax:5.0, start:2000}
+  };
+  var FP_MAX = 16000;
+  var cur = "buero", size = USE.buero.start;
+  var range = document.getElementById("cRange");
+  var nf = new Intl.NumberFormat(I18N.locale);
+  function eur(n){ return nf.format(Math.round(n)); }
+  function price(n){ return n.toLocaleString(I18N.locale,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+
+  function render(){
+    var u = USE[cur];
+    document.getElementById("cSize").textContent = nf.format(size);
+    document.getElementById("cUseLbl").textContent = I18N.useLabel[cur];
+    document.getElementById("cMin").textContent = nf.format(u.min)+" m²";
+    document.getElementById("cMax").textContent = nf.format(u.max)+" m²";
+    document.getElementById("cPrice").textContent = price(u.pmin)+" "+I18N.to+" "+price(u.pmax)+" €/m²";
+    document.getElementById("cMonth").textContent = eur(size*u.pmin)+" "+I18N.to+" "+eur(size*u.pmax)+" €";
+    // footprint, area-proportional with a visible minimum
+    var scale = Math.max(0.10, Math.sqrt(size/FP_MAX));
+    var box = document.getElementById("fpBox");
+    box.style.width = (scale*100)+"%"; box.style.height = (scale*100)+"%";
+  }
+  function setUse(use){
+    cur = use;
+    var u = USE[use];
+    document.querySelectorAll(".tab").forEach(function(t){ t.classList.toggle("is-active", t.dataset.use===use); });
+    range.min=u.min; range.max=u.max; range.step=u.step;
+    size = Math.min(Math.max(size,u.min),u.max);
+    size = Math.round(size/u.step)*u.step;
+    range.value = size;
+    render();
+  }
+  document.querySelectorAll(".tab").forEach(function(t){
+    t.addEventListener("click", function(){ setUse(t.dataset.use); track("flaechenrechner_auswahl",{nutzung:cur,groesse_m2:size}); });
+  });
+  range.addEventListener("input", function(){ size = parseInt(range.value,10); render(); });
+  range.addEventListener("change", function(){ track("flaechenrechner_auswahl",{nutzung:cur,groesse_m2:size}); });
+
+  document.getElementById("cCta").addEventListener("click", function(){
+    document.getElementById("f-flaeche").value = nf.format(size)+" m² "+I18N.useShort[cur];
+    track("cta_calc_anfrage",{nutzung:cur,groesse_m2:size});
+    document.getElementById("anfrage").scrollIntoView({behavior:"smooth"});
+    setTimeout(function(){ document.getElementById("f-name").focus(); }, 600);
+  });
+  render();
+
+  /* ---------- Lead form ---------- */
+  document.getElementById("leadForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = document.getElementById("f-name").value.trim();
+    var mail = document.getElementById("f-mail").value.trim();
+    if(!name || !mail){ if(!name) document.getElementById("f-name").focus(); else document.getElementById("f-mail").focus(); return; }
+    track("lead_submit", {
+      flaeche: document.getElementById("f-flaeche").value,
+      firma: document.getElementById("f-firma").value
+    });
+    // virtueller Pageview für Ads-Conversion (ohne echten Seitenwechsel)
+    if(window.history && window.history.pushState){ window.history.pushState({}, "", "#anfrage-gesendet"); }
+    track("virtual_pageview", {page:"/anfrage-gesendet"});
+    document.querySelectorAll("#leadForm .field, #leadForm .lead__submit").forEach(function(el){ el.style.display="none"; });
+    document.getElementById("leadOk").classList.add("show");
+    // Lead-Capture läuft über data-vbb-form="contact": VibeBridges Runtime fängt den
+    // Submit aus dem Live-DOM in Vesnas Inbox. Dieser Handler zeigt nur das Danke-UI.
+  });
+
+  /* ---------- Galerie-Lightbox ---------- */
+  /* === GAL (per language, generator-swapped) === */
+  var GAL=[
+    {name:"Produktion & Lager", photos:[
+      {src:"img/g-halle.jpg",cap:"Produktionshalle, stützenarm, Tageslicht"},
+      {src:"img/g-halle2.jpg",cap:"Lagerhalle, Höhe und Sektionaltore"},
+      {src:"img/g-halle4.jpg",cap:"Helle, weite Hallenfläche"},
+      {src:"img/g-lager.jpg",cap:"Lagereinheiten mit Laderampen"}
+    ]},
+    {name:"Büro & Arbeitsräume", photos:[
+      {src:"img/g-buero.jpg",cap:"Büro, bezugsfertig, Blick ins Grüne"},
+      {src:"img/g-fassade.jpg",cap:"Bürofassade, 2023 renoviert"},
+      {src:"img/g-podest.jpg",cap:"Zutrittskontrolle, Klima, Kamera"}
+    ]},
+    {name:"Innenausbau", photos:[
+      {src:"img/g-treppe.jpg",cap:"Marmor-Treppenhaus"},
+      {src:"img/g-treppe3.jpg",cap:"Treppenaufgang"},
+      {src:"img/g-treppe2.jpg",cap:"Treppenhaus mit neuen Finishes"},
+      {src:"img/g-restroom.jpg",cap:"Sanitär, neu gefliest"}
+    ]},
+    {name:"Das Areal", photos:[
+      {src:"img/g-areal3.jpg",cap:"Gebäude direkt an der Mrežnica"},
+      {src:"img/g-areal2.jpg",cap:"Der Komplex von oben, am Fluss"},
+      {src:"img/g-areal-court.jpg",cap:"Innenhof mit Laderampen"},
+      {src:"img/flaechen.jpg",cap:"Laderampen unter den Büroetagen"},
+      {src:"img/g-areal-top.jpg",cap:"Das Areal am Fluss von oben"}
+    ]}
+  ];
+  /* === /GAL === */
+  var lb=document.getElementById("lb"), lbImg=document.getElementById("lbImg");
+  var lbCat=0, lbIdx=0;
+  function lbRender(){var p=GAL[lbCat].photos[lbIdx];lbImg.src=p.src;lbImg.alt=p.cap;
+    document.getElementById("lbMeta").textContent=GAL[lbCat].name+"   "+(lbIdx+1)+" / "+GAL[lbCat].photos.length;
+    document.getElementById("lbText").textContent=p.cap;}
+  function lbOpen(c){lbCat=c;lbIdx=0;lbRender();lb.classList.add("open");lb.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";track("galerie_oeffnen",{kategorie:GAL[c].name});}
+  function lbClose(){lb.classList.remove("open");lb.setAttribute("aria-hidden","true");document.body.style.overflow="";}
+  function lbStep(d){var n=GAL[lbCat].photos.length;lbIdx=(lbIdx+d+n)%n;lbRender();}
+  document.querySelectorAll(".gcat").forEach(function(b){b.addEventListener("click",function(){lbOpen(parseInt(b.dataset.cat,10));});});
+  document.getElementById("lbClose").addEventListener("click",lbClose);
+  document.getElementById("lbNext").addEventListener("click",function(){lbStep(1);});
+  document.getElementById("lbPrev").addEventListener("click",function(){lbStep(-1);});
+  lb.addEventListener("click",function(e){if(e.target===lb)lbClose();});
+  document.addEventListener("keydown",function(e){if(!lb.classList.contains("open"))return;if(e.key==="Escape")lbClose();else if(e.key==="ArrowRight")lbStep(1);else if(e.key==="ArrowLeft")lbStep(-1);});
+  var lbTX=0;
+  lb.addEventListener("touchstart",function(e){lbTX=e.changedTouches[0].clientX;},{passive:true});
+  lb.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-lbTX;if(Math.abs(dx)>40)lbStep(dx<0?1:-1);},{passive:true});
+
+  /* ---------- Scroll-Reveal (einmalig) ---------- */
+  (function(){
+    if(!("IntersectionObserver" in window)) return;
+    document.querySelectorAll(".sec-head, .calc").forEach(function(el){ el.classList.add("rv"); });
+    document.querySelectorAll(".facts .reg, .lage__grid, .gal2, .fluss__cols, .profiles, .kond__grid, .anfrage__grid").forEach(function(g){
+      g.classList.add("rvg");
+      Array.prototype.forEach.call(g.children, function(c,i){ c.style.setProperty("--ri", i); });
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    document.querySelectorAll(".rv, .rvg").forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body>
+</html>
