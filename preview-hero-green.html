@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duga Resa · Hero Farbvarianten (Grün) · Preview</title>
+<style>
+  @font-face{font-family:"Geist";src:url("fonts/Geist-Variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+  @font-face{font-family:"Geist Mono";src:url("fonts/GeistMono-Variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+
+  :root{
+    --greige:#EDEEEC; --greige-2:#E4E6E3; --ink:#1C1E20;
+    --ink-dim:rgba(28,30,32,0.66); --ink-faint:rgba(28,30,32,0.40);
+    --hair:rgba(28,30,32,0.14); --hair-soft:rgba(28,30,32,0.08);
+    --accent:#1E8A5A; --accent-deep:#177046; --on-accent:#F4F6F4;
+    --dark:#16191C; --paper:#EDEEEC; --paper-dim:rgba(237,238,236,0.66); --paper-faint:rgba(237,238,236,0.58);
+    --scrim:#13171B;
+    --wrap:1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Geist",system-ui,sans-serif;background:var(--greige);color:var(--ink);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;line-height:1.5}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .mono{font-family:"Geist Mono",ui-monospace,monospace}
+  .wrap{max-width:var(--wrap);margin:0 auto;width:100%}
+  .tnum{font-feature-settings:"tnum" 1}
+
+  .btn{display:inline-flex;align-items:center;gap:9px;font-size:14px;letter-spacing:.01em;text-decoration:none;
+    padding:14px 26px;border-radius:2px;border:1px solid transparent;cursor:pointer;font-family:inherit;
+    transition:transform .2s ease,background .2s ease,border-color .2s ease,color .2s ease}
+  .btn--primary{background:var(--accent-deep);color:var(--on-accent);font-weight:500}
+  .btn--primary:hover{transform:translateY(-1px)}
+  .btn--on-dark{border-color:var(--paper-faint);color:var(--paper)}
+  .btn--on-dark:hover{border-color:var(--paper-dim)}
+
+  /* ---------- NAV ---------- */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:60;
+    padding:20px clamp(22px,4vw,56px);transition:background .3s ease,border-color .3s ease,padding .3s ease;
+    border-bottom:1px solid transparent}
+  .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .nav.scrolled{background:rgba(237,238,236,0.86);backdrop-filter:blur(10px);border-bottom-color:var(--hair);padding-top:14px;padding-bottom:14px}
+  .nav__brand{display:inline-flex;align-items:center;gap:11px;color:var(--paper);transition:color .3s ease;text-decoration:none}
+  .nav__mark{height:27px;width:auto;display:block;flex:none}
+  .nav__name{font-weight:600;letter-spacing:.26em;font-size:13px;text-transform:uppercase}
+  .nav.scrolled .nav__brand{color:var(--ink)}
+  @media(max-width:520px){.nav__name{display:none}}
+  .nav__right{display:flex;align-items:center;gap:26px}
+  .lang{display:flex;gap:15px;font-size:12px;letter-spacing:.16em}
+  .lang a{color:var(--paper-faint);text-decoration:none;text-transform:uppercase;padding-bottom:3px;transition:color .2s ease}
+  .lang a.is-active{color:var(--paper);border-bottom:1.5px solid var(--accent)}
+  .nav.scrolled .lang a{color:var(--ink-faint)} .nav.scrolled .lang a.is-active{color:var(--ink)}
+  .nav__cta{font-size:12.5px;letter-spacing:.04em;text-decoration:none;color:var(--paper);
+    border:1px solid var(--paper-faint);padding:9px 16px;border-radius:2px;transition:all .25s ease}
+  .nav.scrolled .nav__cta{color:var(--on-accent);background:var(--accent);border-color:var(--accent)}
+  .nav__cta:hover{border-color:var(--accent)}
+  @media(max-width:680px){.lang{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
+  .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 48%;z-index:-2}
+  .hero__scrim{position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(102deg,color-mix(in srgb,var(--scrim) 84%,transparent),color-mix(in srgb,var(--scrim) 40%,transparent) 40%,transparent 68%),
+    linear-gradient(0deg,color-mix(in srgb,var(--scrim) 90%,transparent),transparent 48%),
+    linear-gradient(180deg,color-mix(in srgb,var(--scrim) 58%,transparent),transparent 15%)}
+  .hero__body{margin-top:auto;padding:0 clamp(22px,4vw,56px) clamp(34px,4vw,56px)}
+  .hero .eyebrow{display:flex;align-items:center;gap:11px;margin-bottom:26px}
+  .hero .eyebrow .tick{width:8px;height:8px;background:var(--accent)}
+  .hero .eyebrow span{font-family:"Geist Mono",monospace;font-size:12px;letter-spacing:.26em;color:var(--paper-dim);text-transform:uppercase}
+  .hero h1{color:var(--paper);font-weight:300;text-transform:uppercase;font-size:clamp(1.7rem,3.9vw,3.5rem);
+    line-height:1.0;letter-spacing:-0.012em;max-width:24ch}
+  .hero .sub{margin-top:24px;max-width:44ch;color:var(--paper-dim);font-size:clamp(15px,1.25vw,18px)}
+  .hero .cta-row{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+  .hero .stats{display:flex;flex-wrap:wrap;margin-top:48px;border-top:1px solid rgba(237,238,236,0.20);padding-top:20px}
+  .hero .stat{padding-right:clamp(24px,3vw,50px);margin-right:clamp(24px,3vw,50px);border-right:1px solid rgba(237,238,236,0.18)}
+  .hero .stat:last-child{border-right:0;margin-right:0;padding-right:0}
+  @media(max-width:600px){
+    .hero .stats{display:grid;grid-template-columns:1fr 1fr;column-gap:0;row-gap:22px;margin-top:34px}
+    .hero .stat{padding:0;margin:0;border-right:0}
+    .hero .stat:nth-child(2n+1){padding-right:20px}
+    .hero .stat:nth-child(2n){border-left:1px solid rgba(237,238,236,0.18);padding-left:20px}
+    .hero .stat__n{font-size:17px}
+  }
+  .hero .stat__n{color:var(--paper);font-size:clamp(19px,1.8vw,26px);font-weight:400;letter-spacing:-0.01em}
+  .hero .stat__l{font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.2em;color:var(--paper-faint);text-transform:uppercase;margin-top:8px}
+  .hero__index{position:absolute;top:clamp(92px,12vw,130px);right:clamp(22px,4vw,56px);font-family:"Geist Mono",monospace;
+    font-size:11px;letter-spacing:.22em;color:var(--paper-faint);text-transform:uppercase;writing-mode:vertical-rl}
+
+  /* ---------- FARB-SWITCHER (nur Preview, nicht Teil der Live-Site) ---------- */
+  .swatcher{position:fixed;bottom:22px;right:22px;z-index:100;background:rgba(20,23,28,0.92);
+    backdrop-filter:blur(10px);border:1px solid rgba(237,238,236,0.14);border-radius:6px;
+    padding:16px 18px;font-family:"Geist Mono",monospace;color:var(--paper);min-width:230px;
+    box-shadow:0 12px 40px rgba(0,0,0,0.35)}
+  .swatcher h2{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-dim);margin-bottom:12px;font-weight:500}
+  .swatcher__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+  .swatch{cursor:pointer;border:2px solid transparent;border-radius:4px;overflow:hidden;background:none;padding:0;
+    display:flex;flex-direction:column;align-items:center;gap:5px;transition:border-color .15s ease}
+  .swatch__dot{width:100%;height:34px;border-radius:3px}
+  .swatch__label{font-size:9px;letter-spacing:.06em;color:var(--paper-dim);text-transform:uppercase}
+  .swatch.is-active{border-color:var(--paper)}
+  .swatcher__custom{display:flex;align-items:center;gap:10px;border-top:1px solid rgba(237,238,236,0.14);padding-top:12px}
+  .swatcher__custom label{font-size:10px;letter-spacing:.08em;color:var(--paper-dim);text-transform:uppercase}
+  .swatcher__custom input[type=color]{width:34px;height:26px;border:1px solid rgba(237,238,236,0.25);border-radius:3px;background:none;cursor:pointer;padding:0}
+  .swatcher__hex{margin-left:auto;font-size:11px;color:var(--paper-faint)}
+  .swatcher__note{margin-top:12px;font-size:9.5px;line-height:1.5;color:var(--paper-faint);letter-spacing:.02em}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav" data-cms-section="nav">
+  <div class="wrap nav__inner">
+    <a href="#top" class="nav__brand" aria-label="Poslovno Energetski Park"><svg class="nav__mark" viewBox="0 0 622 464" fill="none" aria-hidden="true"><path d="M402.07 0H366C370.139 145.303 342.54 290.775 503.769 464H622C446.977 342.918 412.821 195.792 402.07 0Z" fill="currentColor"/><path d="M250 464H371C334.893 286.498 325.047 185.039 329.328 0H290.668C294.69 182.879 285.911 284.442 250 464Z" fill="var(--accent)"/><path d="M219.93 0H256C251.861 145.303 279.46 290.775 118.231 464H1.90735e-06C175.023 342.918 209.179 195.792 219.93 0Z" fill="currentColor"/></svg><span class="nav__name">Poslovno Energetski Park</span></a>
+    <div class="nav__right">
+      <div class="lang" data-lang-switch>
+        <a href="#" hreflang="hr">HR</a><a href="#" hreflang="en">EN</a><a href="#" hreflang="de" class="is-active" aria-current="true">DE</a><a href="#" hreflang="sl">SL</a>
+      </div>
+      <a href="#anfrage" class="nav__cta">Besichtigung anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <img class="hero__img" src="img/hero.jpg?v=2" alt="Luftaufnahme des Gewerbekomplexes in Duga Resa am Fluss">
+  <div class="hero__scrim"></div>
+  <div class="hero__index">01 / Standort</div>
+  <div class="hero__body">
+    <div class="wrap">
+      <div class="eyebrow"><i class="tick"></i><span>Duga Resa · Karlovac, Kroatien</span></div>
+      <h1>Gewerbeflächen mit geschlossenem Energiekreislauf, an der A1 zwischen Zagreb und Rijeka</h1>
+      <p class="sub">Büro, Produktion und Lager in einem eingezäunten Komplex am Fluss. Strom aus Wasserkraft und Solar vor Ort, renoviert 2023.</p>
+      <div class="cta-row">
+        <a href="#anfrage" class="btn btn--primary">Besichtigung anfragen</a>
+        <a href="#flaechen" class="btn btn--on-dark">Flächen ansehen</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat__n tnum">ab 2,50 €/m²</div><div class="stat__l">Mietpreis</div></div>
+        <div class="stat"><div class="stat__n tnum">50 bis 16.000 m²</div><div class="stat__l">Flächengröße</div></div>
+        <div class="stat"><div class="stat__n">10 Min</div><div class="stat__l">zur A1</div></div>
+        <div class="stat"><div class="stat__n">2023</div><div class="stat__l">renoviert</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="swatcher">
+  <h2>Akzentfarbe</h2>
+  <div class="swatcher__grid" id="swatchGrid"></div>
+  <div class="swatcher__custom">
+    <label for="customColor">Eigener Ton</label>
+    <input type="color" id="customColor" value="#1E8A5A">
+    <span class="swatcher__hex" id="hexOut">#1E8A5A</span>
+  </div>
+  <p class="swatcher__note">Preview-Datei, nicht Teil der Live-Site. Ersetzt die aktuelle Türkis-Akzentfarbe #0F8A82 im Hero.</p>
+</div>
+
+<script>
+  const PRESETS = [
+    { name: 'Türkis (aktuell)', hex: '#0F8A82' },
+    { name: 'Smaragd',          hex: '#1E8A5A' },
+    { name: 'Waldgrün',         hex: '#2F6B4F' },
+    { name: 'Kiefer',           hex: '#1F5C46' },
+    { name: 'Salbei',           hex: '#6B8065' },
+    { name: 'Olive',            hex: '#7A8B4A' },
+    { name: 'Grün (Referenz)',  hex: '#7CB342' },
+    { name: 'Grün Hell',        hex: '#8BC34A' },
+    { name: 'Grün Dunkel',      hex: '#689F38' },
+    { name: 'Grün Warm',        hex: '#94AD42' },
+  ];
+
+  function darken(hex, amt) {
+    const n = parseInt(hex.replace('#', ''), 16);
+    const r = Math.round(((n >> 16) & 255) * (1 - amt));
+    const g = Math.round(((n >> 8) & 255) * (1 - amt));
+    const b = Math.round((n & 255) * (1 - amt));
+    return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+  }
+
+  function setAccent(hex) {
+    const root = document.documentElement.style;
+    root.setProperty('--accent', hex);
+    root.setProperty('--accent-deep', darken(hex, 0.22));
+    document.getElementById('customColor').value = hex;
+    document.getElementById('hexOut').textContent = hex.toUpperCase();
+    document.querySelectorAll('.swatch').forEach(el => {
+      el.classList.toggle('is-active', el.dataset.hex.toLowerCase() === hex.toLowerCase());
+    });
+    localStorage.setItem('duga-resa-accent', hex);
+  }
+
+  const grid = document.getElementById('swatchGrid');
+  PRESETS.forEach(p => {
+    const btn = document.createElement('button');
+    btn.className = 'swatch';
+    btn.dataset.hex = p.hex;
+    btn.innerHTML = `<span class="swatch__dot" style="background:${p.hex}"></span><span class="swatch__label">${p.name}</span>`;
+    btn.addEventListener('click', () => setAccent(p.hex));
+    grid.appendChild(btn);
+  });
+
+  document.getElementById('customColor').addEventListener('input', e => setAccent(e.target.value));
+
+  const saved = localStorage.getItem('duga-resa-accent');
+  setAccent(saved || '#1E8A5A');
+</script>
+
+</body>
+</html>
